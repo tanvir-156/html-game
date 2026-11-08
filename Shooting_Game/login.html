@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Pro Shooter</title>
+    <link rel="stylesheet" href="css/styles.css?rev=larger-buttons-20261101-10">
+    <link rel="icon" type="image/png" href="images/icon.png">
+</head>
+
+<body class="focused-page">
+
+    <!-- Focused form with a back arrow only. -->
+    <main class="focused-main">
+
+        <section class="account-panel" aria-labelledby="pageTitle">
+
+            <header class="panel-heading">
+
+                <a class="back-link" href="index.html" aria-label="Back to title screen">
+
+                    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 12H5 M12 5L5 12L12 19"></path>
+                    </svg>
+
+                </a>
+
+                <h1 id="pageTitle">Login</h1>
+
+            </header>
+
+
+            <!-- Input is validated in JavaScript, not by native browser rules. -->
+            <form id="loginForm" novalidate>
+
+                <label for="loginUsername">Player Name</label>
+
+                <input
+                    type="text"
+                    id="loginUsername"
+                    name="username"
+                    autocomplete="username"
+                    aria-required="true"
+                >
+
+                <label for="loginPassword">Password</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    name="password"
+                    autocomplete="current-password"
+                    aria-required="true"
+                >
+
+                <button class="primary-button account-submit" type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <!-- A message appears only when there is a validation or storage error. -->
+            <p id="loginMessage" class="account-message" role="status"></p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Shared account module -->
+
+    <script type="module" src="js/app.js?rev=larger-buttons-20261101-10"></script>
+
+</body>
+</html>

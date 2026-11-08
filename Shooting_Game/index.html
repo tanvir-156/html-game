@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#102d2a">
+    <title>Pro Shooter</title>
+    <link rel="stylesheet" href="css/styles.css?rev=larger-buttons-20261101-10">
+    <link rel="icon" type="image/png" href="images/icon.png">
+</head>
+
+<body class="game-home">
+
+    <!-- ========================================
+         1. ANIMATED TITLE SCREEN
+         ======================================== -->
+
+    <section id="welcomeScreen" class="splash-screen" aria-labelledby="welcomeTitle">
+
+        <h1 id="welcomeTitle" class="splash-title" tabindex="-1">Pro Shooter</h1>
+
+        <!-- Only the matching player choices appear after the animation. -->
+        <nav id="splashChoices" class="splash-choices hidden" aria-label="Player options">
+
+            <!-- Logged-out players can enter as guests or use an account. -->
+            <div id="guestChoices" class="splash-choice-group hidden">
+
+                <button id="guestButton" class="splash-link" type="button">Guest</button>
+
+            </div>
+
+
+            <!-- Logged-in account controls replace the guest options. -->
+            <div id="memberChoices" class="splash-choice-group hidden">
+
+                <button id="titleStartButton" class="splash-link" type="button">Start</button>
+
+            </div>
+
+
+        </nav>
+
+        <p id="menuMessage" class="menu-message" role="status"></p>
+
+    </section>
+
+
+    <!-- ========================================
+         2. GAME SCREEN
+         ======================================== -->
+
+    <main id="gameScreen" class="minimal-game hidden" aria-labelledby="gameTitle">
+
+        <header class="minimal-header">
+
+            <h1 id="gameTitle">Pro Shooter</h1>
+
+            <button id="quitButton" class="quit-button" type="button">Quit</button>
+
+        </header>
+
+
+        <!-- Essential game statistics only. -->
+        <div class="compact-stats">
+
+            <div>
+
+                <span class="stat-label">Score</span>
+
+                <strong id="scoreValue">00</strong>
+
+            </div>
+
+            <div>
+
+                <span class="stat-label">Best</span>
+
+                <strong id="bestValue">00</strong>
+
+            </div>
+
+            <div>
+
+                <span class="stat-label">Lives</span>
+
+                <strong id="livesValue" class="lives-value">♥ ♥ ♥</strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- The mouse moves the gun. Click or press Space to fire. -->
+        <div
+            id="arena"
+            class="arena"
+            tabindex="0"
+            role="region"
+            aria-label="Game arena. Move the mouse to aim. Click or press Space to fire. Arrow keys also move the gun. Escape pauses."
+        >
+
+            <div class="arena-hud">
+
+                <span id="levelBadge">LEVEL 1</span>
+
+                <span id="timerValue">60 SEC</span>
+
+            </div>
+
+
+            <!-- SVG coordinates move objects without creating inline CSS. -->
+            <svg id="gameScene" class="game-scene" aria-hidden="true">
+
+                <line id="aimGuide" class="aim-guide"></line>
+
+                <line id="shotLine" class="shot-line"></line>
+
+                <!-- foreignObject keeps the existing HTML gun artwork. -->
+                <foreignObject
+                    id="shooterPosition"
+                    class="shooter-position"
+                    width="46"
+                    height="48"
+                >
+
+                    <div id="shooter" class="shooter">
+
+                        <div class="shooter-barrel"></div>
+
+                        <div class="shooter-base"></div>
+
+                    </div>
+
+                </foreignObject>
+
+                <!-- Target objects are added here by Target.js. -->
+
+            </svg>
+
+
+            <!-- Short messages appear only for levels, pauses and results. -->
+            <div
+                id="gameMessage"
+                class="arena-message is-hidden"
+                aria-labelledby="messageTitle"
+                aria-describedby="messageText"
+            >
+
+                <h2 id="messageTitle">Pro Shooter</h2>
+
+                <p id="messageText"></p>
+
+                <button id="startButton" class="primary-button" type="button">Continue</button>
+
+            </div>
+
+            <div id="hitFlash" class="hit-flash" aria-hidden="true"></div>
+
+        </div>
+
+        <p id="scoreMessage" class="account-message" role="status"></p>
+
+    </main>
+
+    <p id="audioStatus" class="audio-status" role="status"></p>
+
+    <noscript>This game needs JavaScript enabled.</noscript>
+
+
+    <!-- The game uses separate ES modules. -->
+    <!-- Title links: account forms for guests, Rankings and Logout for members. -->
+    <nav id="siteNavigation" class="site-navigation hidden" aria-label="Main navigation">
+
+        <a class="site-nav-link" href="login.html" data-guest-link>Login</a>
+
+        <a class="site-nav-link" href="register.html" data-guest-link>Register</a>
+
+        <a class="site-nav-link hidden" href="leaderboard.html" id="rankingsLink">Rankings</a>
+
+        <button id="titleLogoutButton" class="site-nav-link hidden" type="button">Logout</button>
+
+    </nav>
+
+
+    <script type="module" src="js/main.js?rev=larger-buttons-20261101-10"></script>
+
+</body>
+</html>

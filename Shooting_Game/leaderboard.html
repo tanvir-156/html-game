@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rankings - Pro Shooter</title>
+    <link rel="stylesheet" href="css/styles.css?rev=larger-buttons-20261101-10">
+    <link rel="icon" type="image/png" href="images/icon.png">
+</head>
+
+<body class="focused-page">
+
+    <!-- Focused rankings with a back arrow only. -->
+    <main class="focused-main rankings-main">
+
+        <section class="leaderboard-panel" aria-labelledby="leaderboardTitle">
+
+            <header class="panel-heading">
+
+                <a class="back-link" href="index.html" aria-label="Back to title screen">
+
+                    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 12H5 M12 5L5 12L12 19"></path>
+                    </svg>
+
+                </a>
+
+                <h1 id="leaderboardTitle">Rankings</h1>
+
+            </header>
+
+
+            <!-- Every registered player's personal best appears in this table. -->
+            <div class="table-container">
+
+                <table class="leaderboard-table" aria-labelledby="leaderboardTitle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th scope="col">Rank</th>
+
+                            <th scope="col">Player Name</th>
+
+                            <th scope="col">Best Score</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="leaderboardBody"></tbody>
+
+                </table>
+
+            </div>
+
+            <!-- Extra feedback is displayed only if the saved data cannot load. -->
+            <p id="leaderboardNote" class="leaderboard-note" role="status"></p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Shared rankings module -->
+
+    <script type="module" src="js/app.js?rev=larger-buttons-20261101-10"></script>
+
+</body>
+</html>

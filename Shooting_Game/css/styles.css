@@ -1,0 +1,1290 @@
+/* ========================================
+   1. COMMON STYLES FOR ALL PAGES
+   ======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 1100px;
+    min-height: 100vh;
+    background: #f1f8f4;
+    color: #18332f;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Fixed desktop page widths; smaller screens do not use another layout. */
+
+main {
+    width: 820px;
+    margin: 40px auto;
+}
+
+
+/* Common buttons */
+
+.primary-button {
+    padding: 12px 20px;
+    background: #11998e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.primary-button:hover {
+    background: #08796e;
+}
+
+
+/* Hide elements */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ========================================
+   2. ACCOUNT AND LEADERBOARD PANELS
+   ======================================== */
+
+.account-panel,
+.leaderboard-panel {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #dce8e2;
+    border-radius: 8px;
+}
+
+
+/* Account form labels */
+
+.account-panel label {
+    display: block;
+    margin: 12px 0 6px;
+    color: #77857f;
+    font-size: 12px;
+}
+
+
+/* Account form inputs */
+
+.account-panel input {
+    width: 100%;
+    height: 38px;
+    padding: 10px;
+    border: 1px solid #dce8e2;
+    border-radius: 4px;
+}
+
+.account-panel input:focus {
+    outline: 2px solid #a9e4c5;
+}
+
+.account-panel input[aria-invalid="true"] {
+    border-color: #b34a4a;
+}
+
+
+/* Account buttons */
+
+.account-submit {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Account and score messages */
+
+.account-message {
+    color: #b34a4a;
+    font-size: 12px;
+}
+
+.account-message.success {
+    color: #138554;
+}
+
+
+/* Leaderboard table */
+
+.table-container {
+    overflow-x: auto;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.leaderboard-table th {
+    padding: 10px 7px;
+    color: #77857f;
+    border-bottom: 1px solid #dce8e2;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.leaderboard-table td {
+    padding: 12px 7px;
+    border-bottom: 1px solid #edf2ee;
+    font-size: 14px;
+}
+
+.leaderboard-table th:last-child,
+.leaderboard-table td:last-child {
+    text-align: right;
+}
+
+
+/* Player ranking details */
+
+.rank-number {
+    color: #89948e;
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.rank-score {
+    color: #168c5e;
+    font-weight: bold;
+}
+
+
+/* Leaderboard information message */
+
+.leaderboard-note {
+    padding-top: 10px;
+    color: #87918b;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* Empty leaderboard message */
+
+.leaderboard-table .empty-ranking {
+    padding: 20px 5px;
+    color: #87918b;
+    text-align: center;
+}
+
+
+/* ========================================
+   3. TITLE SCREEN AND INTRO ANIMATION
+   ======================================== */
+
+.splash-screen {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #102d2a;
+    background-image: radial-gradient(ellipse at center, #193c34, #102d2a 70%);
+    color: #c5efac;
+}
+
+.splash-title {
+    margin: 0;
+    padding: 20px;
+    font-size: 112px;
+    font-weight: bold;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+.splash-title:focus {
+    outline: none;
+}
+
+.is-intro .splash-title {
+    animation: title-arrival 3s ease-out both;
+}
+
+@keyframes title-arrival {
+
+    0% {
+        opacity: 0;
+        filter: blur(14px);
+        transform: translateY(15px) scale(0.88);
+        letter-spacing: 0.08em;
+    }
+
+    25% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1.02);
+    }
+
+    70% {
+        text-shadow: 0 0 42px rgba(197, 239, 172, 0.16);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+        letter-spacing: -0.04em;
+        text-shadow: none;
+    }
+
+}
+
+
+/* Small player choices appear only after the title animation. */
+
+.splash-choices {
+    position: absolute;
+    right: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    animation: choices-arrival 0.4s ease-out both;
+}
+
+.splash-link {
+    padding: 14px 8px;
+    background: none;
+    color: #b5caba;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.splash-link:hover,
+.splash-link:focus-visible {
+    color: #e4ffd1;
+}
+
+@keyframes choices-arrival {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ========================================
+   4. GAME HEADER AND STATISTICS
+   ======================================== */
+
+.minimal-game {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 980px;
+    margin: 0 auto;
+    padding: 24px 0;
+}
+
+.minimal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.minimal-header h1 {
+    margin: 0;
+    color: #18332f;
+    font-size: 26px;
+    letter-spacing: -1px;
+}
+
+.quit-button {
+    padding: 9px 14px;
+    background: transparent;
+    color: #547568;
+    border: 1px solid #c5d9cb;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.quit-button:hover {
+    background: #e2eee5;
+}
+
+.compact-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.compact-stats > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-label {
+    color: #77857f;
+    font-size: 11px;
+}
+
+.compact-stats strong {
+    font-size: 24px;
+    font-variant-numeric: tabular-nums;
+}
+
+.compact-stats .lives-value {
+    color: #ef6660;
+    font-size: 20px;
+}
+
+
+/* ========================================
+   5. ARENA AND MOUSE-CONTROLLED GUN
+   ======================================== */
+
+.arena {
+    --arena-color: #102e2b;
+    --level-accent: #69dfbf;
+    position: relative;
+    flex: 1;
+    min-height: 360px;
+    max-height: 720px;
+    overflow: hidden;
+    border: 1px solid var(--level-accent);
+    background-color: var(--arena-color);
+    transition: background-color 0.5s, border-color 0.5s;
+    cursor: crosshair;
+    touch-action: none;
+    user-select: none;
+}
+
+.arena:focus {
+    outline: none;
+}
+
+.arena:focus-visible {
+    outline: 1px solid var(--level-accent);
+    outline-offset: 3px;
+}
+
+.arena-hud {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+#timerValue {
+    font-variant-numeric: tabular-nums;
+
+}
+
+.aim-guide {
+    /* fill: red; */
+    fill: none;
+    stroke: rgba(159, 227, 204, 0.19);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+    pointer-events: none;
+}
+
+
+
+.shooter {
+    position: relative;
+    width: 46px;
+    height: 48px;
+    pointer-events: none;
+}
+
+.shooter-barrel {
+    position: absolute;
+    bottom: 13px;
+    left: 18px;
+    width: 10px;
+    height: 36px;
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+.shooter-base {
+    position: absolute;
+    bottom: 0;
+    left: 3px;
+    width: 40px;
+    height: 18px;
+    border: 2px solid white;
+    border-radius: 14px 14px 4px 4px;
+}
+
+.shot-line {
+    display: none;
+    fill: none;
+    stroke: #ffd18a;
+    stroke-width: 2;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.shot-line.firing {
+    display: block;
+    animation: shot 0.18s ease-out;
+}
+
+@keyframes shot {
+
+    from {
+        opacity: 1;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+}
+
+
+/* ========================================
+   6. TARGET SPRITE SHEET
+   ======================================== */
+
+/* Six horizontal 64 × 64 frames are animated with background-position steps. */
+
+.target-sprite {
+    width: var(--target-size);
+    height: var(--target-size);
+    background-image: url("../images/target-sprite.png");
+    background-repeat: repeat-x;
+    background-size: calc(var(--target-size) * 6) var(--target-size);
+    animation: target-sprite 0.72s steps(6) infinite;
+    animation-play-state: paused;
+    pointer-events: none;
+}
+
+.arena.is-running .target-sprite {
+    animation-play-state: running;
+}
+
+.target.is-hit-hidden {
+    visibility: hidden;
+}
+
+@keyframes target-sprite {
+
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: calc(var(--target-size) * -6) 0;
+    }
+
+}
+
+
+/* ========================================
+   7. BRIEF LEVEL AND RESULT MESSAGES
+   ======================================== */
+
+.arena-message {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    cursor: default;
+}
+
+.arena-message.is-hidden {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.arena-message h2 {
+    margin: 0 0 12px;
+    font-size: 30px;
+    letter-spacing: -1px;
+}
+
+.arena-message p {
+    margin: 0 0 24px;
+    font-size: 13px;
+}
+
+.arena-message p:empty {
+    display: none;
+}
+
+.hit-flash {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: #6ee7a6;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hit-flash.flash {
+    animation: flash 0.18s ease-out;
+}
+
+@keyframes flash {
+
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}
+
+#scoreMessage {
+    margin: 0;
+}
+
+#scoreMessage:empty,
+.audio-status:empty {
+    display: none;
+}
+
+.audio-status {
+    position: fixed;
+    right: 20px;
+    left: 20px;
+    z-index: 10;
+    color: #b34a4a;
+    font-size: 11px;
+    text-align: center;
+}
+
+
+/* ========================================
+   8. REDUCED MOTION ACCESSIBILITY
+   ======================================== */
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .is-intro .splash-title,
+    .splash-choices {
+        animation: none;
+    }
+
+    .target-sprite {
+        animation-duration: 2s;
+    }
+
+    .arena {
+        transition: none;
+    }
+
+}
+
+
+/* ========================================
+   9. SAVED-LOGIN TITLE OPTIONS
+   ======================================== */
+
+.splash-choice-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+#titleStartButton {
+    color: #c5efac;
+    font-weight: bold;
+}
+
+.menu-message {
+    position: absolute;
+    right: 20px;
+    left: 20px;
+    color: #e6b1a0;
+    font-size: 11px;
+    text-align: center;
+}
+
+.menu-message:empty {
+    display: none;
+}
+
+
+/* ========================================
+   10. FOCUSED ACCOUNT AND RANKINGS PAGES
+   ======================================== */
+
+.focused-main {
+    width: 440px;
+    margin: 70px auto;
+}
+
+.rankings-main {
+    width: 820px;
+}
+
+.focused-main .account-panel,
+.focused-main .leaderboard-panel {
+    margin-top: 0;
+    padding: 26px;
+}
+
+.panel-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.panel-heading h1 {
+    margin: 0;
+    color: #18332f;
+    font-size: 24px;
+    letter-spacing: -0.7px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    color: #547568;
+    border: 1px solid #dce8e2;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    background: #edf6ef;
+    color: #11998e;
+}
+
+.back-link:focus-visible {
+    outline: 2px solid #11998e;
+    outline-offset: 3px;
+}
+
+.back-link svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.focused-main .account-message:empty,
+.focused-main .leaderboard-note:empty {
+    display: none;
+}
+
+
+/* ========================================
+   11. THREE-SECOND ROUND COUNTDOWN
+   ======================================== */
+
+.arena-message.countdown-message {
+    pointer-events: none;
+}
+
+.countdown-message h2 {
+    margin: 0;
+    color: var(--level-accent);
+    font-size: 96px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+.countdown-pulse {
+    animation: countdown-pulse 0.7s ease-out both;
+}
+
+@keyframes countdown-pulse {
+
+    from {
+        opacity: 0.35;
+        transform: scale(1.2);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .countdown-pulse {
+        animation: none;
+    }
+
+}
+
+
+/* ========================================
+   12. TITLE SCREEN NAVIGATION
+   ======================================== */
+
+.site-navigation {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    width: max-content;
+    padding: 9px 16px;
+    background: #ffffff;
+    border: 1px solid #dce8e2;
+    border-radius: 30px;
+    transform: translateX(-50%);
+}
+
+.site-nav-link {
+    display: inline-block;
+    padding: 7px 8px;
+    background: none;
+    color: #547568;
+    border: none;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.site-nav-link:hover,
+.site-nav-link[aria-current="page"] {
+    color: #11998e;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.site-nav-link:focus-visible {
+    outline: 2px solid #11998e;
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+.title-mode .site-navigation {
+    background: #14362f;
+    border-color: #3e5e51;
+}
+
+.title-mode .site-nav-link {
+    color: #b5caba;
+}
+
+.title-mode .site-nav-link:hover,
+.title-mode .site-nav-link[aria-current="page"] {
+    color: #c5efac;
+}
+
+.splash-choices {
+    bottom: 96px;
+}
+
+.menu-message {
+    bottom: 150px;
+}
+
+.minimal-game {
+    height: 100vh;
+    min-height: 550px;
+}
+
+.focused-page {
+    display: flow-root;
+    padding-bottom: 90px;
+}
+
+.audio-status {
+    bottom: 78px;
+}
+
+
+/* ========================================
+   13. SUBTLE PAGE ENTRANCE ANIMATIONS
+   ======================================== */
+
+.focused-main .account-panel,
+.focused-main .leaderboard-panel {
+    animation: page-arrive 0.48s ease-out both;
+}
+
+.focused-main form,
+.focused-main .table-container {
+    animation: content-arrive 0.4s ease-out 0.08s both;
+}
+
+.focused-main input {
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+
+.focused-main .primary-button,
+.focused-main .back-link {
+    transition: background-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.focused-main .primary-button:hover {
+    box-shadow: 0 3px 10px rgba(17, 153, 142, 0.13);
+}
+
+@keyframes page-arrive {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes content-arrive {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* ========================================
+   14. MINT-TEAL ARCADE ARENA
+   ======================================== */
+
+.arena {
+    isolation: isolate;
+    border-color: var(--level-accent);
+    border-radius: 12px;
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(126, 234, 200, 0.1), transparent 65%), linear-gradient(rgba(171, 235, 213, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(171, 235, 213, 0.055) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    box-shadow: inset 0 0 60px rgba(0, 12, 12, 0.24), 0 0 0 4px rgba(17, 153, 142, 0.04), 0 10px 28px rgba(16, 46, 43, 0.1);
+}
+
+/* The quiet sweep and corner marks never intercept aiming or tapping. */
+.arena::before {
+    content: "";
+    position: absolute;
+    top: -35%;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    height: 30%;
+    background: linear-gradient(transparent, rgba(128, 235, 207, 0.035), transparent);
+    animation: arena-sweep 16s linear infinite;
+    animation-play-state: paused;
+    pointer-events: none;
+}
+
+.arena.is-running::before {
+    animation-play-state: running;
+}
+
+.arena::after {
+    content: "";
+    position: absolute;
+    inset: 11px;
+    z-index: 0;
+    border: 1px solid rgba(159, 227, 204, 0.1);
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.arena-hud {
+    top: 21px;
+    right: 21px;
+    left: 21px;
+    color: var(--level-accent);
+    letter-spacing: 0.7px;
+}
+
+.arena-hud span {
+    padding: 6px 9px;
+    background: rgba(4, 21, 20, 0.45);
+    border: 1px solid rgba(159, 227, 204, 0.16);
+    border-radius: 4px;
+}
+
+.shooter {
+    filter: drop-shadow(0 0 8px rgba(105, 223, 191, 0.35));
+}
+
+.shooter-barrel {
+    background: #50cdb0;
+    border-color: #d8fff0;
+}
+
+.shooter-base {
+    background: linear-gradient(#4bd3b8, #11998e);
+    border-color: #d8fff0;
+}
+
+.shot-line {
+    stroke: #ffd18a;
+    filter: drop-shadow(0 0 5px rgba(255, 209, 138, 0.6));
+}
+
+.target-sprite {
+    filter: drop-shadow(0 3px 5px rgba(0, 12, 12, 0.4));
+}
+
+.arena-message {
+    background: rgba(10, 31, 29, 0.94);
+    color: #e3f8ef;
+}
+
+.arena-message p {
+    color: #accdc0;
+}
+
+.arena-message.countdown-message {
+    background: rgba(10, 31, 29, 0.68);
+}
+
+@keyframes arena-sweep {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(460%);
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .focused-main .account-panel,
+    .focused-main .leaderboard-panel,
+    .focused-main form,
+    .focused-main .table-container,
+    .arena::before {
+        animation: none;
+    }
+
+    .focused-main input,
+    .focused-main .primary-button,
+    .focused-main .back-link {
+        transition: none;
+    }
+
+}
+
+
+/* ========================================
+   15. MATCHING ARCADE ACCOUNT AND RANKINGS PANELS
+   ======================================== */
+
+.focused-page {
+    background: radial-gradient(ellipse at 50% 0%, #dceee5, transparent 65%), #f1f8f4;
+}
+
+.focused-main .account-panel,
+.focused-main .leaderboard-panel {
+    position: relative;
+    isolation: isolate;
+    background-color: #122f2b;
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(105, 223, 191, 0.09), transparent 70%), linear-gradient(rgba(171, 235, 213, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(171, 235, 213, 0.025) 1px, transparent 1px);
+    background-size: 100% 100%, 32px 32px, 32px 32px;
+    color: #e3f8ef;
+    border: 1px solid #467e6c;
+    border-radius: 12px;
+    box-shadow: 0 0 0 4px rgba(17, 153, 142, 0.035), 0 16px 40px rgba(16, 46, 43, 0.13), inset 0 0 40px rgba(0, 12, 12, 0.12);
+}
+
+/* Decorative frame details stay behind the form and cannot block clicks. */
+.focused-main .account-panel::before,
+.focused-main .leaderboard-panel::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: 34px;
+    left: 34px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #8be5c8, transparent);
+    box-shadow: 0 0 12px rgba(105, 223, 191, 0.18);
+    pointer-events: none;
+}
+
+.focused-main .account-panel::after,
+.focused-main .leaderboard-panel::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    z-index: -1;
+    border: 1px solid rgba(159, 227, 204, 0.08);
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+.focused-main .panel-heading {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(159, 227, 204, 0.13);
+}
+
+.focused-main .panel-heading h1 {
+    color: #e3f8ef;
+    text-shadow: 0 0 18px rgba(105, 223, 191, 0.1);
+}
+
+.focused-main .back-link {
+    background: rgba(4, 21, 20, 0.3);
+    color: #8be5c8;
+    border-color: #3b6558;
+    border-radius: 9px;
+}
+
+.focused-main .back-link:hover {
+    background: #234c40;
+    color: #d8fff0;
+}
+
+.focused-main .back-link:focus-visible {
+    outline-color: #8be5c8;
+}
+
+.focused-main .account-panel label {
+    color: #b6cfc3;
+    font-size: 11px;
+    letter-spacing: 0.65px;
+    text-transform: uppercase;
+}
+
+.focused-main input {
+    height: 42px;
+    background: rgba(4, 21, 20, 0.42);
+    color: #e3f8ef;
+    caret-color: #8be5c8;
+    border-color: #365c50;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.focused-main input:hover {
+    border-color: #598673;
+}
+
+.focused-main input:focus {
+    outline: 2px solid rgba(139, 229, 200, 0.3);
+    outline-offset: 1px;
+    border-color: #8be5c8;
+    box-shadow: 0 0 12px rgba(105, 223, 191, 0.08);
+}
+
+.focused-main input[aria-invalid="true"] {
+    border-color: #f0a89d;
+}
+
+/* Keep saved browser credentials readable against the dark input surface. */
+.focused-main input:-webkit-autofill {
+    -webkit-text-fill-color: #e3f8ef;
+    caret-color: #8be5c8;
+    box-shadow: inset 0 0 0 1000px #173a32;
+}
+
+.focused-main .account-submit {
+    background: linear-gradient(135deg, #80dfbf, #49c3a6);
+    color: #10362b;
+    border: 1px solid #a0edcf;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+}
+
+.focused-main .account-submit:hover {
+    background: linear-gradient(135deg, #9beacc, #66d3b5);
+    box-shadow: 0 0 18px rgba(105, 223, 191, 0.14);
+}
+
+.focused-main .account-submit:focus-visible {
+    outline: 2px solid #b8f7df;
+    outline-offset: 4px;
+}
+
+.focused-main .account-message {
+    color: #ffc0b5;
+    line-height: 1.5;
+}
+
+.focused-main .account-message.success {
+    color: #8be5c8;
+}
+
+.focused-main .leaderboard-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: #b6cfc3;
+    background: rgba(4, 21, 20, 0.25);
+    border-color: #365c50;
+    font-size: 10px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.focused-main .leaderboard-table td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-color: rgba(159, 227, 204, 0.1);
+}
+
+.focused-main .leaderboard-table tbody tr:nth-child(even) {
+    background: rgba(159, 227, 204, 0.025);
+}
+
+.focused-main .leaderboard-table tbody tr:hover {
+    background: rgba(139, 229, 200, 0.065);
+}
+
+.focused-main .rank-number {
+    color: #9cbaac;
+    font-family: Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.focused-main .leaderboard-table tbody tr:first-child .rank-number {
+    color: #f1d293;
+}
+
+.focused-main .player-name {
+    color: #e3f8ef;
+}
+
+.focused-main .rank-score {
+    color: #8be5c8;
+    font-family: Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.focused-main .empty-ranking,
+.focused-main .leaderboard-note {
+    color: #b6cfc3;
+}
+
+
+/* ========================================
+   16. SVG GEOMETRY AND EXTERNAL LEVEL STYLES
+   ======================================== */
+
+/* JavaScript changes SVG coordinates; all visual styles stay in this file. */
+.game-scene {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.shooter-position,
+.target-position {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.arena[data-level="1"] {
+    --arena-color: #102e2b;
+    --level-accent: #69dfbf;
+    --target-size: 54px;
+}
+
+.arena[data-level="2"] {
+    --arena-color: #112c39;
+    --level-accent: #83ccef;
+    --target-size: 50px;
+}
+
+.arena[data-level="3"] {
+    --arena-color: #332b1d;
+    --level-accent: #f0ca80;
+    --target-size: 46px;
+}
+
+.arena[data-level="4"] {
+    --arena-color: #292338;
+    --level-accent: #c6a3ee;
+    --target-size: 42px;
+}
+
+.arena[data-level="5"] {
+    --arena-color: #352323;
+    --level-accent: #f2a49b;
+    --target-size: 38px;
+}
+
+.arena[data-level="6"] {
+    --arena-color: #123037;
+    --level-accent: #87e5db;
+    --target-size: 34px;
+}
+
+/* Each target begins on a different sprite frame, as in the previous edition. */
+.target-delay-0 {
+    animation-delay: 0s;
+}
+
+.target-delay-1 {
+    animation-delay: -0.12s;
+}
+
+.target-delay-2 {
+    animation-delay: -0.24s;
+}
+
+.target-delay-3 {
+    animation-delay: -0.36s;
+}
+
+.target-delay-4 {
+    animation-delay: -0.48s;
+}
+
+.target-delay-5 {
+    animation-delay: -0.6s;
+}
